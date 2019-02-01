@@ -28,10 +28,11 @@ From this planning, I decided on four classes for my program:
 
 To begin scraping, I found that all book data was nested under `div#g-book-data`. A book’s title and author were easy to scrape, as every book’s title could be accessed uniformly through `div#g-book-title` and the author through `div#g-book-author b`.
 
-Everything else - as I would learn later on in the coding process -  proved more difficult to scrape! Each book has 1-3 genres listed inside of the same div, formatted as a plain line of text. Every book has a price and a publisher, but the order of these details changes, and some books have additional info (translator name, book format, etc.) thrown in. Due to this lack of a uniform organization and inclusion of some data points across the book list, I had to narrow down my focus on which attributes to scrape. 
+Everything else - as I would discover later in the coding process -  proved more difficult to scrape. Each book has 1-3 genres listed inside of the same div, formatted as a plain line of text. Every book has a price and a publisher, but the order of these details changes, and some books have additional info inside the div (translator name, book format, etc). Due to this lack of a uniform organization of some data points across the book list, I had to narrow my focus on which attributes to scrape. 
 
 **Easy to scrape and parse:**
 ![](https://drive.google.com/uc?export=view&id=1g73trR_KnHR0dTRKKjADExfUxUqGTYjS)
+
 
 **Not so easy:**
 ![](https://drive.google.com/uc?export=view&id=15W2IQH8IWOpI9VLCUZ5_TPCua18_NIt0)
@@ -61,7 +62,7 @@ Ultimately, I was able to scrape and use the data for a book’s Title, Author, 
   end
 ```
 
-Inspired by the [Student Scraper](https://github.com/norawolf/oo-student-scraper-online-web-pt-112618) lab, I decided to iterate through the data for each book and populate a hash with the key/value pairs of attributes and data for each book. Inside of my Book class, I utilized metaprogramming within my initialize method to allow for me to easily alter which attributes each Book would be instantiated with. Following this format allowed me to easily alter my code to include more Book attributes as I gradually worked out how to scrape some of the less accessible elements from the NYT page. 
+Inspired by the [Student Scraper](https://github.com/norawolf/oo-student-scraper-online-web-pt-112618) lab, I decided to iterate through the data for each book and populate a hash with the key/value pairs of attributes and data for each book. Inside of my Book class, I utilized metaprogramming within my initialize method to allow for me to easily alter which attributes each Book would be instantiated with. Following this format allowed me flexibility to include more Book attributes as I gradually worked out how to scrape some of the less accessible elements from the NYT page. 
 
 ```
   def initialize(book_hash)
@@ -80,7 +81,7 @@ Inspired by the [Student Scraper](https://github.com/norawolf/oo-student-scraper
 
 After scraping and instantiating my Books, it was time to move on to one of the most difficult aspects of this project: the object relationships between my Book and Genre classes. I took to my notebook to sketch things out:
 
-<center>A Genre **has many** Books, and a Book **belongs to** one or several Genres.</center>
+<center>A Genre <b>has many</b> Books, and a Book <b>belongs to</b> one or several Genres.</center>
 
 I altered my `scrape_book_info` method to also be responsible for instantiating new Genres while iterating through the scraped genre text data. At first, I ended up with 100 Genre objects... one for each book in my `Genre.all` array. OOPS.
 
