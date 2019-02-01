@@ -8,7 +8,7 @@ permalink:  notable_books_cli_application
 
 I’m feeling accomplished now that I’ve completed my Ruby CLI Data Gem project, which was my first experience in designing an application from start to finish. The project is a synthesis of everything we’ve learned so far: from procedural Ruby to object oriented programming; understanding and navigating the command line interface; and how to work with Git and GitHub. 
 
-I learned so much from the process of planning and building this program and definitely experienced the whole spectrum of coding feelings from total panic when my application broke to the golden focus and confidence of getting it to work again. My constant reminder: **Break things down into small pieces. Figure out how to make just the next thing work. **
+I learned so much from the process of planning and building this program and definitely experienced the whole spectrum of coding feelings from total panic when my application broke to the golden focus and confidence of getting it to work again. My constant reminder: <b>Break things down into small pieces. Figure out how to make just the next thing work. </b>
 
 It took me quite a few attempts to find a website that was a good candidate for scraping. I kept running into sites that looked promising, but had content loaded with JavaScript. With the help of Jenn Hansen’s [Scraper Checker](https://repl.it/@jenn_leigh_hansen/ScraperChecker?language=ruby) on Repl.it, I settled on the New York Times’ [100 Notable Books of 2018](https://www.nytimes.com/interactive/2018/11/19/books/review/100-notable-books.html) list. 
 
