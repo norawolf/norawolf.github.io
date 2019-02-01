@@ -8,33 +8,33 @@ permalink:  notable_books_cli_application
 
 I’m feeling accomplished now that I’ve completed my Ruby CLI Data Gem project, which was my first experience in designing an application from start to finish. The project is a synthesis of everything we’ve learned so far: from procedural Ruby to object oriented programming; understanding and navigating the command line interface; and how to work with Git and GitHub. 
 
-I learned so much from the process of planning and building this program and definitely experienced the whole spectrum of coding feelings from total panic when my application broke to the golden focus and confidence of getting it to work again. My constant reminder: B**reak things down into small pieces. Figure out how to make just the next thing work. **
+I learned so much from the process of planning and building this program and definitely experienced the whole spectrum of coding feelings from total panic when my application broke to the golden focus and confidence of getting it to work again. My constant reminder: **Break things down into small pieces. Figure out how to make just the next thing work. **
 
 It took me quite a few attempts to find a website that was a good candidate for scraping. I kept running into sites that looked promising, but had content loaded with JavaScript. With the help of Jenn Hansen’s [Scraper Checker](https://repl.it/@jenn_leigh_hansen/ScraperChecker?language=ruby) on Repl.it, I settled on the New York Times’ [100 Notable Books of 2018](https://www.nytimes.com/interactive/2018/11/19/books/review/100-notable-books.html) list. 
 
 I began by stubbing out what the command line interface (CLI) class would look like, and I decided that I wanted the user to have two main options for viewing book data:
 
-* Browse books in numbered order, AKA - browsing all books, broken up into small numbered lists in order to make the command line output more readable. 
+* Browse books in numbered order (browsing all books, broken up into small numbered lists in order to make the command line output more readable.)
 * Browse books sorted by Genre
 
-For each option, I wanted the CLI to print a numbered list of books so the user could enter a number to access more information about their chosen book. The option to browse books by Genre would also require a way to keep track of which genre each book belonged to. 
+For each option, I wanted the CLI to print a numbered list of books so the user could enter a number to see more information about their chosen book. The option to browse books by Genre would also require a way to keep track of which genre each book belonged to. 
 
 From this planning, I decided on four classes for my program: 
 
 * Scraper - Scrape data from the NYT site; instantiate new Books and Genres
-* CLI - methods for execution of the program and user interaction
+* CLI - methods for execution of the application and user interaction
 * Book - assign attributes to Books; make each Book belong to one or more genre(s)
 * Genre - create Genre attributes; make each Genre have many books
 
-To begin scraping, I found that all book data was nested under `div#g-book-data`. A book’s title and author were easy to scrape, as every book’s title could be accessed uniformly through `div#g-book-title` and the author through `#g-book-author b`.
+To begin scraping, I found that all book data was nested under `div#g-book-data`. A book’s title and author were easy to scrape, as every book’s title could be accessed uniformly through `div#g-book-title` and the author through `div#g-book-author b`.
 
 Everything else - as I would learn later on in the coding process -  proved more difficult to scrape! Each book has 1-3 genres listed inside of the same div, formatted as a plain line of text. Every book has a price and a publisher, but the order of these details changes, and some books have additional info (translator name, book format, etc.) thrown in. Due to this lack of a uniform organization and inclusion of some data points across the book list, I had to narrow down my focus on which attributes to scrape. 
 
 **Easy to scrape and parse:**
-![](https://drive.google.com/open?id=1g73trR_KnHR0dTRKKjADExfUxUqGTYjS)
+![](https://drive.google.com/uc?export=view&id=1g73trR_KnHR0dTRKKjADExfUxUqGTYjS)
 
 **Not so easy:**
-![](https://drive.google.com/open?id=15W2IQH8IWOpI9VLCUZ5_TPCua18_NIt0)
+![](https://drive.google.com/uc?export=view&id=15W2IQH8IWOpI9VLCUZ5_TPCua18_NIt0)
 
 Ultimately, I was able to scrape and use the data for a book’s Title, Author, Genre, Publisher, Price, and Description. Here’s what my scraper method became: 
 
