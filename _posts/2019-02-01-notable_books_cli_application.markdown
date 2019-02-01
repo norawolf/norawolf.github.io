@@ -87,25 +87,27 @@ I altered my `scrape_book_info` method to also be responsible for instantiating 
 
 To fix this, I started with pseudocode:
 
-*-This method should search the Genre.all array 
-- and if the genre name being passed in matches the `.name` attribute for any Genre instance, 
-- associate this book with that genre. 
-- But if the genre doesn’t exist, it should create it. *
+* This method should search the Genre.all array 
+* and if the genre name being passed in matches the `.name` attribute for any Genre instance, 
+* associate this book with that genre. 
+* But if the genre doesn’t exist, it should create it.
 
 I puzzled for a while. Then: beautiful lightbulb moment! This was exactly the scenario for the `find_or_create_by` methods we practiced in the OO labs. Thus, inside my Genre class:
 
 
-```def self.find_by_name(name)
-all.find {|genre| genre.name == name}
+```
+def self.find_by_name(name)
+  all.find {|genre| genre.name == name}
 end
 
 def self.create_by_name(name)
-NotableBooks2018::Genre.new(name)
+  NotableBooks2018::Genre.new(name)
 end
 
 def self.find_or_create_by_name(name)
-find_by_name(name) || create_by_name(name)
-end```
+  find_by_name(name) || create_by_name(name)
+end
+```
 
 
 And so, the Genre instantiation became a helper method inside of Scraper.rb that I called while assigning the value of my `book_hash[:genre]` attribute. Since Books have 1-3 genres, I iterated with `.collect` so that this method would return an array with either 1, 2, or 3 Genre instances.
