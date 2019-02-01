@@ -143,6 +143,8 @@ Now that my class relationships were working, I built out my CLI class with the 
 
 I’m really, really proud of how this application turned out, and you can check it out for yourself over on [GitHub](https://github.com/norawolf/notable_books_2018).
 
+You can also find my gem on [RubyGems](https://rubygems.org/gems/notable_books_2018). 
+
 **Future Functionality Expansions**
 
 I have many ideas for how I could continue to expand the functionality of this CLI application as I continue to learn more. Here are two that I would like to keep working on:
