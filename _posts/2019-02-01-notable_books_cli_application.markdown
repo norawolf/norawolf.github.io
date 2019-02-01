@@ -123,20 +123,21 @@ end
 
 Then, I asked the question: <b>How does a Genre know what books it has?</b>
 
-The answer: It doesn’t! (Yet).
+The answer: It doesn’t! (Yet.)
 
 Over to the Book class, to create a custom genre= method, so that when I call .books on an instance of the Genre class, it returns actual Book instances instead of string names. A book's `genre=` property is set equal to an array containing 1, 2, or 3 Genre instances. So, I added iteration that for each instance in the genre array, shovel this Book instance (`self`) into the `genre.books` array.
 
-  ```
-	 def genre=(genre)
-     @genre = genre
-		 
-      genre.each do |genre_instance|
-        genre_instance.books << self
-      end
-	end
 
-	```
+```
+def genre=(genre)
+   @genre = genre
+		 
+    genre.each do |genre_instance|
+      genre_instance.books << self
+    end
+end
+```
+
 
 Now that my class relationships were working, I built out my CLI class with the many methods I would need to walk the user through the 2 main options for viewing books: by genre or from a numbered list. I put a lot of care into making the navigation flexible, allowing the user to switch between viewing books by Genre or index and allowing the user to exit anytime. I also tried to sanitize the data inputs and control for invalid data. 
 
