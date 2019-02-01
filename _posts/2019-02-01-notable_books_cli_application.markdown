@@ -141,7 +141,7 @@ end
 
 Now that my class relationships were working, I built out my CLI class with the many methods I would need to walk the user through the 2 main options for viewing books: by genre or from a numbered list. I put a lot of care into making the navigation flexible, allowing the user to switch between viewing books by Genre or index and allowing the user to exit anytime. I also tried to sanitize the data inputs and control for invalid data. 
 
-I’m really, really proud of how this application turned out, and you can check it out for yourself over at Github: [https://github.com/norawolf/notable_books_2018](https://github.com/norawolf/notable_books_2018)
+I’m really, really proud of how this application turned out, and you can check it out for yourself over on [GitHub](https://github.com/norawolf/notable_books_2018).
 
 **Future Functionality Expansions**
 
