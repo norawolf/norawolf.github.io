@@ -123,16 +123,12 @@ Then, I asked the question: <b>How does a Genre know what books it has?</b>
 
 The answer: It doesn’t! (Yet).
 
-Over to the Book class, to create a custom genre= method, so that when I call .books on an instance of the Genre class, it returns actual Book instances instead of string names. 
+Over to the Book class, to create a custom genre= method, so that when I call .books on an instance of the Genre class, it returns actual Book instances instead of string names. A book's `genre=` property is set equal to an array containing 1, 2, or 3 Genre instances. So, I added iteration that for each instance in the genre array, shovel this Book instance (`self`) into the `genre.books` array.
 
   ```
 	 def genre=(genre)
      @genre = genre
-		
-     #genre is an array of 1 or 2 or 3 instances
-     # for each instance in the genre array (Fiction, Poetry, etc)
-     # associate this Book instance being instantiated to that Genre
-		
+		 
       genre.each do |genre_instance|
         genre_instance.books << self
       end
@@ -145,7 +141,8 @@ Now that my class relationships were working, I built out my CLI class with the 
 I’m really, really proud of how this application turned out, and you can check it out for yourself over at Github: [https://github.com/norawolf/notable_books_2018](https://github.com/norawolf/notable_books_2018)
 
 **Future Functionality Expansions**
-I have many ideas for how I could continue to expand the functionality of this CLI program as I continue to learn more. Here are two that I would like to keep working on:
+
+I have many ideas for how I could continue to expand the functionality of this CLI application as I continue to learn more. Here are two that I would like to keep working on:
 
 * Allow the user to create a profile to save books to a Reading List
 * Add the ability for a user to check if a local library has a copy of a book from the list 
