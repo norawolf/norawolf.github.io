@@ -81,7 +81,7 @@ While writing validations to ensure that a user cannot see or edit another User'
 The code would break if a user tried to enter the ID of an entry that has been deleted from the database, or that has not yet been created, into the URL. 
 ![](http://drive.google.com/uc?export=view&id=19uKm7SIw_ZCKn34IIg5cMgk2AL6YHuob)
 
-I tried writing all kinds of conditional statements to handle the non-existent Entry, such as making sure the `@entry` instance variable assignation only executes if `Entry.find(params[:id]` returns true:
+I tried writing all kinds of conditional statements to handle the non-existent Entry, such as making sure the `@entry` instance variable assignation only executes if `Entry.find(params[:id])` returns true:
 
 ```
 get '/entries/:id' do
