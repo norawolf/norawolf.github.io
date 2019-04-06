@@ -114,7 +114,7 @@ get '/entries/:id' do
 
 ## The Work Continues
 I'm excited to have turned in my first Sinatra application, and there are features that I want to continue to develop for this project. I would like to:
-* Push my project to Heroku
+* Deploy my project to Heroku
 * Utilize the Sinatra Flash gem to display error messages
 * Dive deeper into the front end styling
 * Add insights to a User's dashboard page drawing correlations between recent moods / activities over a period of time
