@@ -7,7 +7,7 @@ permalink:  check-in_a_mental_health_journal
 
 For my final Sinatra project, I created [Check-In: A Mental Health Journal](https://github.com/norawolf/check-in-journal). Check-In is an application designed to allow users to easily create entries to track their moods and associated daily activities. The further I get into my web development education, the more I am able to envision the links between the skills we’re learning and the software I would like to build to support health, accessibility, and community wellness. 
 
-## The Planning Phase
+## Project Outline
 I spent some time outlining the functionality I wanted my application to have:
 * A user can create a new account
 * A user can create a new entry
