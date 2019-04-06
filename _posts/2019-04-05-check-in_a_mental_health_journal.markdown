@@ -46,16 +46,15 @@ I installed the rails-erd gem to generate a diagram of my domain:
 I used the [corneal gem](https://github.com/thebrianemory/corneal) to generate my MVC project structure, and I then got to work stubbing out my routes. 
 
 ## Interesting Development Challenges
-1. While building the form to create a new entry, I iterate through the collection of all activities, `Activity.all`, in order to generate a list of checkboxes with selectable activity names. When checking the `params` hash in my `post /entries/` route, I kept discovering that a mysterious new activity with the name of `on` was being created and added to Activity.all. Where was this `on` coming from?
+* While building the form to create a new entry, I iterate through the collection of all activities, `Activity.all`, in order to generate a list of checkboxes with selectable activity names. When checking the `params` hash in my `post /entries/` route, I kept discovering that a mysterious new activity with the name of `on` was being created and added to Activity.all. Where was this `on` coming from?
   * As it turns out, when a user submits a form with a `checkbox` input, the form will default the value to `on` if no value attribute is specified . All I needed to do was add a value attribute to my `<input>` tag. Thanks, StackOverflow! (https://stackoverflow.com/a/13658228)
-	
 ```
 <% @activities.each do |activity| %>
     <input type="checkbox" class="label-body" name="entry[activities][]" value="<%= activity.name %>"> <%= activity.name %></input>
 <% end %>
 ```
 
-2.  I ran into another issue of unexpected data appearing within my `params` hash after form submission. Inside of `post/entries/`, `params[:moods]` contained an empty string as the first value in the moods array. This resulted in my application instantiating a new mood object with an empty name value. 
+* I ran into another issue of unexpected data appearing within my `params` hash after form submission. Inside of `post/entries/`, `params[:moods]` contained an empty string as the first value in the moods array. This resulted in my application instantiating a new mood object with an empty name value. 
    * My form uses the HTML `select multiple` tag in order to allow a user to select multiple moods from a dropdown list to add to their entry. According to [API Dock](https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/select), when a multiple parameter is passed to select, an auxillary hidden field is generated before every multiple select. 
    * This is an HTML workaround to address the fact that when all options get deselected from a multiple select, web browsers do not send any value to the server. 
    * So, sending a hidden field with the same name as the multiple select (in our case, `entry[:moods][]`) but a blank value, allows for a multiple select form to still be updated with all options deselected. 
@@ -70,7 +69,7 @@ end
 ```
 
 			
-3. While writing validations to ensure that a user cannot see or edit another User's data, I ran into an interesting problem. While I could control for a user manually entering a URL to view a post that does not belong to them:
+* While writing validations to ensure that a user cannot see or edit another User's data, I ran into an interesting problem. While I could control for a user manually entering a URL to view a post that does not belong to them:
 
 ```@entry = Entry.find(params[:id])
   if current_user && @entry.user_id == current_user.id
