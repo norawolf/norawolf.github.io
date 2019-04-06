@@ -60,13 +60,11 @@ I ran into another issue of unexpected data appearing within my `params` hash af
    * So, sending a hidden field with the same name as the multiple select (in our case, `entry[:moods][]`) but a blank value, allows for a multiple select form to still be updated with all options deselected. 
    * I bypassed the creation of the new Mood instance with an empty name value in my code with a simple if statement:
 
-```
-params[:entry][:moods].each do |mood|
+```params[:entry][:moods].each do |mood|
   if !mood.empty?
     @entry.moods << Mood.find_or_create_by(name: mood)
   end
-end
-```
+end```
 
 			
 While writing validations to ensure that a user cannot see or edit another User's data, I ran into an interesting problem. While I could control for a user manually entering a URL to view a post that does not belong to them:
@@ -81,7 +79,7 @@ While writing validations to ensure that a user cannot see or edit another User'
 The code would break if a user tried to enter the ID of an entry that has been deleted from the database, or that has not yet been created, into the URL. 
 ![](http://drive.google.com/uc?export=view&id=19uKm7SIw_ZCKn34IIg5cMgk2AL6YHuob)
 
-I tried writing all kinds of conditional statements to handle the non-existent Entry, such as making sure the @entry instance variable assignation only executes if `Entry.find(params[:id]` returns true:
+I tried writing all kinds of conditional statements to handle the non-existent Entry, such as making sure the `@entry` instance variable assignation only executes if `Entry.find(params[:id]` returns true:
 
 ```get '/entries/:id' do
   if Entry.find(params[:id])
