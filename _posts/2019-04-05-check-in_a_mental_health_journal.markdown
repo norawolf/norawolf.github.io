@@ -71,6 +71,7 @@ end
 
 			
 3. While writing validations to ensure that a user cannot see or edit another User's data, I ran into an interesting problem. While I could control for a user manually entering a URL to view a post that does not belong to them:
+
 ```
   @entry = Entry.find(params[:id])
 
