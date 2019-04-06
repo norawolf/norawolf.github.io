@@ -72,21 +72,19 @@ end
 			
 3. While writing validations to ensure that a user cannot see or edit another User's data, I ran into an interesting problem. While I could control for a user manually entering a URL to view a post that does not belong to them:
 
-```
-  @entry = Entry.find(params[:id])
+```@entry = Entry.find(params[:id])
   if current_user && @entry.user_id == current_user.id
     erb :'/entries/show'
   else
     halt erb(:error_entries)
-  end
-```
+  end```
 
 The code would break if a user tried to enter the ID of an entry that has been deleted from the database, or that has not yet been created, into the URL. 
 ![](http://drive.google.com/uc?export=view&id=19uKm7SIw_ZCKn34IIg5cMgk2AL6YHuob)
 
 I tried writing all kinds of conditional statements to handle the non-existent Entry, such as making sure the @entry instance variable assignation only executes if `Entry.find(params[:id]` returns true:
-```
-get '/entries/:id' do
+
+```get '/entries/:id' do
   if Entry.find(params[:id])
     @entry = Entry.find(params[:id])
      if current_user && @entry.user_id == current_user.id
@@ -95,12 +93,11 @@ get '/entries/:id' do
        halt erb(:error_entries)
      end
   end
-end
-```
-but I kept hitting errors. With the help of a classmate, we googled the `ActiveRecord::RecordNotFound` error and ultimately found that the `#find` method always throws the `ActiveRecord::RecordNotFound` error if an object isn't found, but using `#find_by` or `#find_by_id` will return `nil` if the object isn't found. So, I resolved the error with: 
-```
+end```
 
-get '/entries/:id' do
+but I kept hitting errors. With the help of a classmate, we googled the `ActiveRecord::RecordNotFound` error and ultimately found that the `#find` method always throws the `ActiveRecord::RecordNotFound` error if an object isn't found, but using `#find_by` or `#find_by_id` will return `nil` if the object isn't found. So, I resolved the error with: 
+
+```get '/entries/:id' do
     @entry = Entry.find_by_id(params[:id])
 
     if @entry.nil?
@@ -110,8 +107,7 @@ get '/entries/:id' do
     else
       halt erb(:error_entries)
     end
-  end
-```
+  end```
 
 ## The Work Continues
 I'm excited to have turned in my first Sinatra application, and there are features that I want to continue to develop for this project. I would like to:
