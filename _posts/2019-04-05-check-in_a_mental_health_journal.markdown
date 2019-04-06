@@ -83,7 +83,8 @@ The code would break if a user tried to enter the ID of an entry that has been d
 
 I tried writing all kinds of conditional statements to handle the non-existent Entry, such as making sure the `@entry` instance variable assignation only executes if `Entry.find(params[:id]` returns true:
 
-```get '/entries/:id' do
+```
+get '/entries/:id' do
   if Entry.find(params[:id])
     @entry = Entry.find(params[:id])
      if current_user && @entry.user_id == current_user.id
@@ -92,11 +93,13 @@ I tried writing all kinds of conditional statements to handle the non-existent E
        halt erb(:error_entries)
      end
   end
-end```
+end
+```
 
 but I kept hitting errors. With the help of a classmate, we googled the `ActiveRecord::RecordNotFound` error and ultimately found that the `#find` method always throws the `ActiveRecord::RecordNotFound` error if an object isn't found, but using `#find_by` or `#find_by_id` will return `nil` if the object isn't found. So, I resolved the error with: 
 
-```get '/entries/:id' do
+```
+get '/entries/:id' do
     @entry = Entry.find_by_id(params[:id])
 
     if @entry.nil?
@@ -106,7 +109,8 @@ but I kept hitting errors. With the help of a classmate, we googled the `ActiveR
     else
       halt erb(:error_entries)
     end
-  end```
+  end
+```
 
 ## The Work Continues
 I'm excited to have turned in my first Sinatra application, and there are features that I want to continue to develop for this project. I would like to:
