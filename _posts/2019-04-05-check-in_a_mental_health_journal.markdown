@@ -74,7 +74,6 @@ end
 
 ```
   @entry = Entry.find(params[:id])
-
   if current_user && @entry.user_id == current_user.id
     erb :'/entries/show'
   else
