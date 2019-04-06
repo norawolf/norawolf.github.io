@@ -66,7 +66,7 @@ I used the [corneal gem](https://github.com/thebrianemory/corneal) to generate m
       end```
 			
 3. While writing validations to ensure that a user cannot see or edit another User's data, I ran into an interesting problem. While I could control for a user manually entering a URL to view a post that does not belong to them:
-```get '/entries/:id' do
+```
   @entry = Entry.find(params[:id])
 
   if current_user && @entry.user_id == current_user.id
@@ -74,7 +74,6 @@ I used the [corneal gem](https://github.com/thebrianemory/corneal) to generate m
   else
     halt erb(:error_entries)
   end
-end
 ```
 
 The code would break if a user tried to enter the ID of an entry that has been deleted from the database, or that has not yet been created, into the URL. 
