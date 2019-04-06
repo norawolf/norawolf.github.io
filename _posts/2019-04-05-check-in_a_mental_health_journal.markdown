@@ -61,13 +61,12 @@ I ran into another issue of unexpected data appearing within my `params` hash af
    * So, sending a hidden field with the same name as the multiple select (in our case, `entry[:moods][]`) but a blank value, allows for a multiple select form to still be updated with all options deselected. 
    * I bypassed the creation of the new Mood instance with an empty name value in my code with a simple `if` statement:
 
-```
-params[:entry][:moods].each do |mood|
-  if !mood.empty?
+  ```
+if !mood.empty?
     @entry.moods << Mood.find_or_create_by(name: mood)
-  end
-end
+ end
 ```
+
 
 			
 While writing validations to ensure that a user cannot see or edit another User's data, I ran into an interesting problem. While I could control for a user manually entering a URL to view a post that does not belong to them:
